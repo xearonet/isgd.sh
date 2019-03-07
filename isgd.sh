@@ -3,6 +3,11 @@
 # License: AGPLv3
 # License URL: www.fsf.org/licensing/licenses/agpl-3.0.html
 
+if ! [ -x "$(command -v curl)" ]; then
+  echo 'Error: curl is not installed.' >&2
+  exit 1
+fi
+
 function short_url() {
 	OURL="$(echo $1 | xxd -p|tr -d \\n|sed 's/../%&/g')"
 	echo $OURL
